@@ -410,7 +410,9 @@ namespace HIDInterface
             productInfo.devicePath = devicePath;
             productInfo.manufacturer = manfString;
             productInfo.product = productName;
-            productInfo.serialNumber = Convert.ToInt32(SN);
+            Int32 temp = 0;
+            //Here will error while SN not the Number
+            productInfo.serialNumber = Int32.TryParse(SN,out temp)?temp:0;
             productInfo.PID = (ushort)attributes.ProductID;
             productInfo.VID = (ushort)attributes.VendorID;
             productInfo.versionNumber = (ushort)attributes.VersionNumber;
